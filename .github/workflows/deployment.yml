@@ -30,3 +30,34 @@ jobs:
         run: npm run build
       - name: Deploy
         run: echo "Deploying ..."
+  parallel_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Preview project
+        run: npm run preview
+      - name: Deploy
+        run: echo "Previewing ..."
+  parallel_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Goodbye
+        run: echo "Goodbye"
+  parallel_3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Xayr
+        run: |
+          pwd
+          echo "Joylashuv"
+          echo "Xayr"
+
+
+
