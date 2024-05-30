@@ -31,6 +31,7 @@ jobs:
       - name: Deploy
         run: echo "Deploying ..."
   parallel_1:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -46,11 +47,13 @@ jobs:
       - name: Deploy
         run: echo "Previewing ..."
   parallel_2:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Print Goodbye
         run: echo "Goodbye"
   parallel_3:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Xayr
