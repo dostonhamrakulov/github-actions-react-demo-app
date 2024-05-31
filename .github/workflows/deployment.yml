@@ -40,22 +40,15 @@ jobs:
           path: |
             dist
             package.json
-  parallel_1:
+  deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install NodeJS
-        uses: actions/setup-node@v3
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
         with:
-          node-version: 18
-      - name: Install dependencies
-        run: echo "npm ci"
-      - name: Preview project
-        run: echo "previewing"
+          name: dist-files
+      - name: Output the content folder structure
+        run: ls -l
       - name: Deploy
-        run: echo "Previewing ..."
-
-
-
+        run: echo "Deploying ..."
